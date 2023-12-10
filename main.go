@@ -17,7 +17,8 @@ func day1() {
 func day2() {
 	fmt.Println("=^..^=    =^..^=   Day 2   =^..^=    =^..^=")
 	lignes := utils.ReadStringList("inputs/day2.txt")
-	fmt.Println("Calibration value :", days.FirstPartDay2(lignes))
+	fmt.Println("Game Validity Prediction :", days.FirstPartDay2(lignes))
+	fmt.Println("Game Total Power :", days.SecondPartDay2(lignes))
 	fmt.Print("\n")
 }
 

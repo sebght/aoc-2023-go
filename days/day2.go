@@ -1,7 +1,6 @@
 package days
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -51,9 +50,35 @@ func FirstPartDay2(lines []string) int {
 		draws := strings.Split(split[2], "; ")
 
 		if isGameValid(draws, limits) {
-			fmt.Println("Jeu valide numéro :", gameNumber)
+			//fmt.Println("Jeu valide numéro :", gameNumber)
 			count += gameNumber
 		}
+	}
+	return count
+}
+
+func computeGameTotalPower(line string) int {
+	split := strings.SplitN(line, " ", 3)
+	draws := strings.Split(split[2], "; ")
+	lowests := map[string]int{"red": 0, "blue": 0, "green": 0}
+	for _, draw := range draws {
+		elements := strings.Split(draw, ", ")
+		for _, el := range elements {
+			n, color, _ := strings.Cut(el, " ")
+			//fmt.Println("color :", color, " et nombre :", n)
+			number, _ := strconv.Atoi(n)
+			if number > lowests[color] {
+				lowests[color] = number
+			}
+		}
+	}
+	return lowests["red"] * lowests["blue"] * lowests["green"]
+}
+
+func SecondPartDay2(lines []string) int {
+	count := 0
+	for _, line := range lines {
+		count += computeGameTotalPower(line)
 	}
 	return count
 }
