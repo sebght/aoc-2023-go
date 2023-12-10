@@ -14,6 +14,13 @@ func day1() {
 	fmt.Print("\n")
 }
 
+func day2() {
+	fmt.Println("=^..^=    =^..^=   Day 2   =^..^=    =^..^=")
+	lignes := utils.ReadStringList("inputs/day2.txt")
+	fmt.Println("Calibration value :", days.FirstPartDay2(lignes))
+	fmt.Print("\n")
+}
+
 func main() {
-	day1()
+	day2()
 }

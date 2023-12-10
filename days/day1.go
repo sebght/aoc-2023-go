@@ -1,21 +1,16 @@
 package days
 
 import (
+	"aoc-2023-go/utils"
 	"fmt"
-	"regexp"
 	"strconv"
 	"strings"
 )
 
-func clearString(str string) string {
-	var nonAlphanumericRegex = regexp.MustCompile(`[^0-9 ]+`)
-	return nonAlphanumericRegex.ReplaceAllString(str, "")
-}
-
 func FirstPartDay1(lines []string) int {
 	count := 0
 	for _, line := range lines {
-		digits := clearString(line)
+		digits := utils.ExtractDigitsFromString(line)
 		result := ""
 		switch {
 		case len(digits) < 2:
